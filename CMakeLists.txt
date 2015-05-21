@@ -1,0 +1,32 @@
+# General project setup
+CMAKE_MINIMUM_REQUIRED (VERSION 2.8.3)
+
+PROJECT (ExportScene03)
+
+SET (CMAKE_MODULE_PATH
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_MODULE_PATH}
+)
+
+FIND_PACKAGE (FBX REQUIRED)
+
+INCLUDE_DIRECTORIES(
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_BINARY_DIR}
+  ${FBX_INCLUDE_DIRS}
+)
+
+SET (SRCS
+  main.cxx
+  MyKFbxMesh.cxx
+  MyKFbxMesh.h
+  Common.h
+  Common.cxx
+  AnimationUtility.cxx
+  AnimationUtility.h
+  GeometryUtility.cxx
+  GeometryUtility.h
+)
+
+ADD_EXECUTABLE (${PROJECT_NAME} ${SRCS})
+TARGET_LINK_LIBRARIES (${PROJECT_NAME} ${FBX_LIBRARIES})
